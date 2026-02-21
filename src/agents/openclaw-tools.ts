@@ -7,6 +7,7 @@ import { createAgentsListTool } from "./tools/agents-list-tool.js";
 import { createBrowserTool } from "./tools/browser-tool.js";
 import { createCanvasTool } from "./tools/canvas-tool.js";
 import type { AnyAgentTool } from "./tools/common.js";
+import { createComposioTool } from "./tools/composio-tool.js";
 import { createCronTool } from "./tools/cron-tool.js";
 import { createGatewayTool } from "./tools/gateway-tool.js";
 import { createImageTool } from "./tools/image-tool.js";
@@ -167,6 +168,15 @@ export function createOpenClawTools(options?: {
     ...(webFetchTool ? [webFetchTool] : []),
     ...(imageTool ? [imageTool] : []),
   ];
+
+  const composioTool = createComposioTool({
+    composioConfig: options?.config?.composio,
+    agentSessionKey: options?.agentSessionKey,
+    resolveEntityId: () => options?.agentAccountId ?? options?.requesterSenderId ?? undefined,
+  });
+  if (composioTool) {
+    tools.push(composioTool);
+  }
 
   const pluginTools = resolvePluginTools({
     context: {
