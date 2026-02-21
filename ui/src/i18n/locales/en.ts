@@ -22,6 +22,7 @@ export const en: TranslationMap = {
     collapse: "Collapse sidebar",
   },
   tabs: {
+    dashboard: "Dashboard",
     agents: "Agents",
     overview: "Overview",
     channels: "Channels",
@@ -37,6 +38,7 @@ export const en: TranslationMap = {
     logs: "Logs",
   },
   subtitles: {
+    dashboard: "Live status across agents, sessions, channels, and usage.",
     agents: "Manage agent workspaces, tools, and identities.",
     overview: "Gateway status, entry points, and a fast health read.",
     channels: "Manage channels and settings.",
