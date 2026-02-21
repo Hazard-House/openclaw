@@ -227,6 +227,18 @@ import {
   WizardStatusResultSchema,
   type WizardStep,
   WizardStepSchema,
+  type OnboardAuthInitiateParams,
+  OnboardAuthInitiateParamsSchema,
+  OnboardAuthInitiateResultSchema,
+  type OnboardAuthStatusParams,
+  OnboardAuthStatusParamsSchema,
+  OnboardAuthStatusResultSchema,
+  type OnboardSimpleParams,
+  OnboardSimpleParamsSchema,
+  OnboardSimpleResultSchema,
+  type OnboardRecipesParams,
+  OnboardRecipesParamsSchema,
+  OnboardRecipesResultSchema,
 } from "./schema.js";
 
 const ajv = new (AjvPkg as unknown as new (opts?: object) => import("ajv").default)({
@@ -376,6 +388,14 @@ export const validateUpdateRunParams = ajv.compile<UpdateRunParams>(UpdateRunPar
 export const validateWebLoginStartParams =
   ajv.compile<WebLoginStartParams>(WebLoginStartParamsSchema);
 export const validateWebLoginWaitParams = ajv.compile<WebLoginWaitParams>(WebLoginWaitParamsSchema);
+export const validateOnboardAuthInitiateParams =
+  ajv.compile<OnboardAuthInitiateParams>(OnboardAuthInitiateParamsSchema);
+export const validateOnboardAuthStatusParams =
+  ajv.compile<OnboardAuthStatusParams>(OnboardAuthStatusParamsSchema);
+export const validateOnboardSimpleParams =
+  ajv.compile<OnboardSimpleParams>(OnboardSimpleParamsSchema);
+export const validateOnboardRecipesParams =
+  ajv.compile<OnboardRecipesParams>(OnboardRecipesParamsSchema);
 
 export function formatValidationErrors(errors: ErrorObject[] | null | undefined) {
   if (!errors?.length) {
@@ -509,6 +529,14 @@ export {
   PROTOCOL_VERSION,
   ErrorCodes,
   errorShape,
+  OnboardAuthInitiateParamsSchema,
+  OnboardAuthInitiateResultSchema,
+  OnboardAuthStatusParamsSchema,
+  OnboardAuthStatusResultSchema,
+  OnboardSimpleParamsSchema,
+  OnboardSimpleResultSchema,
+  OnboardRecipesParamsSchema,
+  OnboardRecipesResultSchema,
 };
 
 export type {
@@ -611,4 +639,8 @@ export type {
   PollParams,
   UpdateRunParams,
   ChatInjectParams,
+  OnboardAuthInitiateParams,
+  OnboardAuthStatusParams,
+  OnboardSimpleParams,
+  OnboardRecipesParams,
 };

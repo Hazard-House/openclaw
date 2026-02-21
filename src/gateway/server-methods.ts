@@ -32,6 +32,7 @@ import { updateHandlers } from "./server-methods/update.js";
 import { usageHandlers } from "./server-methods/usage.js";
 import { voicewakeHandlers } from "./server-methods/voicewake.js";
 import { webHandlers } from "./server-methods/web.js";
+import { onboardSimpleHandlers } from "./server-methods/onboard-simple.js";
 import { wizardHandlers } from "./server-methods/wizard.js";
 
 const CONTROL_PLANE_WRITE_METHODS = new Set(["config.apply", "config.patch", "update.run"]);
@@ -92,6 +93,7 @@ export const coreGatewayHandlers: GatewayRequestHandlers = {
   ...usageHandlers,
   ...agentHandlers,
   ...agentsHandlers,
+  ...onboardSimpleHandlers,
   ...browserHandlers,
 };
 
