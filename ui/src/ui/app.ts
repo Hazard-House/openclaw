@@ -39,6 +39,7 @@ import {
 import {
   applySettings as applySettingsInternal,
   loadCron as loadCronInternal,
+  loadDashboard as loadDashboardInternal,
   loadOverview as loadOverviewInternal,
   setTab as setTabInternal,
   setTheme as setThemeInternal,
@@ -433,6 +434,10 @@ export class OpenClawApp extends LitElement {
 
   setTheme(next: ThemeMode, context?: Parameters<typeof setThemeInternal>[2]) {
     setThemeInternal(this as unknown as Parameters<typeof setThemeInternal>[0], next, context);
+  }
+
+  async loadDashboard() {
+    await loadDashboardInternal(this as unknown as Parameters<typeof loadDashboardInternal>[0]);
   }
 
   async loadOverview() {
