@@ -152,6 +152,7 @@
     "chokidar": "^5.0.0",
     "cli-highlight": "^2.1.11",
     "commander": "^14.0.3",
+    "composio-core": "^0.5.39",
     "croner": "^10.0.1",
     "discord-api-types": "^0.38.39",
     "dotenv": "^17.3.1",

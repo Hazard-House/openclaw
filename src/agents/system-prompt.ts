@@ -250,6 +250,8 @@ export function buildAgentSystemPrompt(params: {
     session_status:
       "Show a /status-equivalent status card (usage + time + Reasoning/Verbose/Elevated); use for model-use questions (📊 session_status); optional per-session model override",
     image: "Analyze an image with the configured image model",
+    composio:
+      "Connect and manage external services (Gmail, Outlook, Google Calendar, Slack, GitHub, etc.) via Composio. Use during onboarding to send auth links, and for executing email/calendar/productivity actions.",
   };
 
   const toolOrder = [
@@ -277,6 +279,7 @@ export function buildAgentSystemPrompt(params: {
     "subagents",
     "session_status",
     "image",
+    "composio",
   ];
 
   const rawToolNames = (params.toolNames ?? []).map((tool) => tool.trim());
