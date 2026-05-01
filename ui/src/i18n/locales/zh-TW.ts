@@ -22,6 +22,7 @@ export const zh_TW: TranslationMap = {
     collapse: "折疊側邊欄",
   },
   tabs: {
+    dashboard: "儀表板",
     agents: "代理",
     overview: "概覽",
     channels: "頻道",
@@ -37,6 +38,7 @@ export const zh_TW: TranslationMap = {
     logs: "日誌",
   },
   subtitles: {
+    dashboard: "代理、會話、頻道和使用情況的即時狀態。",
     agents: "管理代理工作區、工具和身份。",
     overview: "網關狀態、入口點和快速健康讀取。",
     channels: "管理頻道和設置。",

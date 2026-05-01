@@ -59,6 +59,7 @@ import { renderChannels } from "./views/channels.ts";
 import { renderChat } from "./views/chat.ts";
 import { renderConfig } from "./views/config.ts";
 import { renderCron } from "./views/cron.ts";
+import { renderDashboard } from "./views/dashboard.ts";
 import { renderDebug } from "./views/debug.ts";
 import { renderExecApprovalPrompt } from "./views/exec-approval.ts";
 import { renderGatewayUrlConfirmation } from "./views/gateway-url-confirmation.ts";
@@ -203,8 +204,8 @@ export function renderApp(state: AppViewState) {
         }
         <section class="content-header">
           <div>
-            ${state.tab === "usage" ? nothing : html`<div class="page-title">${titleForTab(state.tab)}</div>`}
-            ${state.tab === "usage" ? nothing : html`<div class="page-sub">${subtitleForTab(state.tab)}</div>`}
+            ${state.tab === "usage" || state.tab === "dashboard" ? nothing : html`<div class="page-title">${titleForTab(state.tab)}</div>`}
+            ${state.tab === "usage" || state.tab === "dashboard" ? nothing : html`<div class="page-sub">${subtitleForTab(state.tab)}</div>`}
           </div>
           <div class="page-meta">
             ${state.lastError ? html`<div class="pill danger">${state.lastError}</div>` : nothing}
@@ -212,6 +213,26 @@ export function renderApp(state: AppViewState) {
           </div>
         </section>
 
+        ${
+          state.tab === "dashboard"
+            ? renderDashboard({
+                connected: state.connected,
+                agentsLoading: state.agentsLoading,
+                agentsList: state.agentsList,
+                agentIdentityById: state.agentIdentityById,
+                sessionsLoading: state.sessionsLoading,
+                sessionsResult: state.sessionsResult,
+                channelsLoading: state.channelsLoading,
+                channelsSnapshot: state.channelsSnapshot,
+                presenceLoading: state.presenceLoading,
+                presenceEntries: state.presenceEntries,
+                usageCostSummary: state.usageCostSummary,
+                onRefresh: () => state.loadDashboard(),
+                onNavigateToAgents: () => state.setTab("agents"),
+                onNavigateToSessions: () => state.setTab("sessions"),
+              })
+            : nothing
+        }
         ${
           state.tab === "overview"
             ? renderOverview({

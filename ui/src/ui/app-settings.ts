@@ -179,6 +179,9 @@ export function setTheme(host: SettingsHost, next: ThemeMode, context?: ThemeTra
 }
 
 export async function refreshActiveTab(host: SettingsHost) {
+  if (host.tab === "dashboard") {
+    await loadDashboard(host);
+  }
   if (host.tab === "overview") {
     await loadOverview(host);
   }
@@ -418,6 +421,19 @@ export async function loadChannelsTab(host: SettingsHost) {
     loadConfigSchema(host as unknown as OpenClawApp),
     loadConfig(host as unknown as OpenClawApp),
   ]);
+}
+
+export async function loadDashboard(host: SettingsHost) {
+  await Promise.all([
+    loadAgents(host as unknown as OpenClawApp),
+    loadChannels(host as unknown as OpenClawApp, false),
+    loadPresence(host as unknown as OpenClawApp),
+    loadSessions(host as unknown as OpenClawApp),
+  ]);
+  const agentIds = host.agentsList?.agents?.map((entry) => entry.id) ?? [];
+  if (agentIds.length > 0) {
+    void loadAgentIdentities(host as unknown as OpenClawApp, agentIds);
+  }
 }
 
 export async function loadCron(host: SettingsHost) {

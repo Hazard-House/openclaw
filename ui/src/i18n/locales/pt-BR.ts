@@ -22,6 +22,7 @@ export const pt_BR: TranslationMap = {
     collapse: "Recolher barra lateral",
   },
   tabs: {
+    dashboard: "Painel",
     agents: "Agentes",
     overview: "Visão Geral",
     channels: "Canais",
@@ -37,6 +38,7 @@ export const pt_BR: TranslationMap = {
     logs: "Logs",
   },
   subtitles: {
+    dashboard: "Status ao vivo de agentes, sessões, canais e uso.",
     agents: "Gerenciar espaços de trabalho, ferramentas e identidades de agentes.",
     overview: "Status do gateway, pontos de entrada e leitura rápida de saúde.",
     channels: "Gerenciar canais e configurações.",
